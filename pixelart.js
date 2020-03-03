@@ -75,6 +75,9 @@ function chooseDrawMode() {
 function chooseBucketMode() {
     mode = fill;
 }
+function changeCustomColor() {
+    document.getElementById("customColor").style.backgroundColor=document.getElementById("changeColor").value
+}
 
 function changeDataType() {
     dataType = $("#selectDataType").val().toString();

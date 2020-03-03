@@ -58,11 +58,13 @@
                     <li class="list-group-item">
                         <span class="d-flex justify-content-center">Custom Color</span>
                         <p/>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex">
+                            <div class="col">
                             <div class="colorPixel" id="customColor" style="background-color: blue"></div>
-                            <div>
+                            </div>
+                            <div class="col justify-content-center">
                                 <label for="changeColor"><em class="fa fa-tint fa-2x"></em> </label>
-                                <input type="color" style="display: none" id="changeColor"/>
+                                <input type="color" style="display: none" id="changeColor" onchange="changeCustomColor()"/>
                             </div>
                         </div>
                     </li>
@@ -137,6 +139,7 @@
                     <select class="custom-select" id="selectDataType" onchange="changeDataType()">
                         <option selected value="jpeg">JPG</option>
                         <option value="png">PNG</option>
+                        <!--it seems gif is not supported in some browsers-->
                         <option value="gif">GIF</option>
                     </select>
                     <div class="input-group-append">
