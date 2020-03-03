@@ -8,7 +8,8 @@ const fill = 'fill';
 // the pixel art space
 const element = $("#html-content-holder");
 //storage for converted canvas
-var getCanvas; // global variable
+var getCanvas;
+//datatype for download
 var dataType;
 
 //variable for currently selected color, default white -> nothing
@@ -119,7 +120,7 @@ function addColorListener() {
 }
 
 //function that adds the conversion from the grid table to a picture
-//currently gif not converted
+//currently gif is accepted mime type but most browsers seem to not support it
 function openDownloadModal() {
     $("#downloadStart").on('click', function () {
         //empty canvas space
@@ -159,7 +160,7 @@ function openDownloadModal() {
     });
 }
 
-//attaches the Pixelart as a different data type to the download btn.
+//attaches the Pixelart as a different data type to the download btn. Gif not yet supported my some browsers it seems.
 function recompileImageDate() {
     var downloadBtn = $("#download");
     switch (dataType) {
@@ -170,11 +171,8 @@ function recompileImageDate() {
             downloadBtn.attr("download", "pixelart.jpg").attr("href", getCanvas.toDataURL("image/" + dataType).replace(/^data:image\/jpeg/, "data:application/octet-stream"));
             break;
         case "gif":
-            downloadBtn.attr("download", "pixelart.gif").attr("href", getCanvas.toDataURL("image/" + dataType).replace(/^data:image\/gif/, "data:application/octet-stream"));
-
+            downloadBtn.attr("download", "pixelart.gif").attr("href", getCanvas.toDataURL("image/" + dataType).replace("image/gif", "image/octet-stream"));
 
     }
-
-
 }
 
