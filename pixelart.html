@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- if responsive design is needed-->
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--custom css for canvas -->
+    <link rel="stylesheet" href="pixelart.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>Pixelart</title>
+</head>
+<body>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar content -->
+    <div class="container">
+        <div class="collapse navbar-collapse justify-content-between">
+            <span class="navbar-text">Choose a Size: </span>
+            <div class="btn-group justify-content-start ">
+                <button class="btn btn-outline-success my-2 my-sm-0" onclick=buildGrid(8)>8 x 8</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" onclick="buildGrid(12)">12 x 12</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" onclick="buildGrid(16)">16 x 16</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" onclick="buildGrid(32)">32 x 32</button>
+            </div>
+            <!-- download converts table into a canvas and previews it in the modal-->
+            <a class="fa fa-save fa-3x" style="color: #28a745" id="downloadStart" data-toggle="modal"
+               data-target="#previewModal"></a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-3 col-xl-2">
+
+            <div class="card">
+                <!-- predefined color card -->
+
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+                        <span class="d-flex justify-content-center">Color Selection</span>
+                        <div class="row">
+                            <div class="colorPixel" style="background-color: blue"></div>
+                            <div class="colorPixel" style="background-color: red"></div>
+                            <div class="colorPixel" style="background-color: green"></div>
+                            <div class="colorPixel" style="background-color: yellow"></div>
+                            <div class="colorPixel" style="background-color: purple"></div>
+                            <div class="colorPixel" style="background-color: cyan"></div>
+                            <div class="colorPixel" style="background-color: darkgreen"></div>
+                            <div class="colorPixel" style="background-color: orange"></div>
+                            <div class="colorPixel" style="background-color: darkblue"></div>
+                            <div class="colorPixel" style="background-color: black"></div>
+                        </div>
+                    </li>
+                    <!-- custom color creation part here -->
+                    <li class="list-group-item">
+                        <span class="d-flex justify-content-center">Custom Color</span>
+                        <p/>
+                        <div class="d-flex justify-content-center">
+                            <div class="colorPixel" id="customColor" style="background-color: blue"></div>
+                            <div>
+                                <label for="changeColor"><em class="fa fa-tint fa-2x"></em> </label>
+                                <input type="color" style="display: none" id="changeColor"/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- tool selection -->
+                <p></p>
+                <span class="d-flex justify-content-center">Drawing Tools</span>
+                <p/>
+                <div class="btn-group d-flex justify-content-between">
+                    <button onclick="chooseEraseMode()" id="erase" class="btn btn-default dashboard-shortcut">
+                        <span class="fa fa-eraser fa-2x"></span>
+                    </button>
+                    <button onclick="chooseDrawMode()" id="draw" class="btn btn-default dashboard-shortcut">
+                        <em class="fa fa-pencil fa-2x"></em>
+                    </button>
+                    <button onclick="chooseBucketMode()" id="bucket" class="btn btn-default dashboard-shortcut">
+                        <em class="fa fa-paint-brush fa-2x"></em>
+                    </button>
+                </div>
+                <p/>
+                <p/>
+
+            </div>
+
+        </div>
+        <!-- drawing space-->
+        <div class="col justify-content-center">
+            <div class="card">
+                <div class="card-body mx-auto">
+                    <h3 class="align-self-center">Pixel Arts</h3>
+                    <!-- pixel table filled through js -->
+                    <div id="html-content-holder">
+                        <table id="pixelGrid" class="gridTable"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--bootstrap functions-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<!--custom pixel art functions -->
+<script type="application/javascript" src="pixelart.js"></script>
+<!-- imported js library for html2canvas conversion -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+
+<!-- Modal for the export preview and data type selection -->
+<div class="modal" tabindex="-1" role="dialog" id="previewModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Your Artwork</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="preview">
+
+            </div>
+            <div class="modal-footer">
+                <div class="input-group">
+                    <select class="custom-select" id="selectDataType" onchange="changeDataType()">
+                        <option selected value="jpeg">JPG</option>
+                        <option value="png">PNG</option>
+                        <option value="gif">GIF</option>
+                    </select>
+                    <div class="input-group-append">
+                        <a type="button" class="btn btn-primary" id="download">Download</a>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" id="cancelModal" data-dismiss="modal">Keep Working
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
