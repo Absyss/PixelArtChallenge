@@ -82,7 +82,6 @@ function fillNeighbourPixels(id, filler) {
 
     let centralPixels = [id, parseInt(id) + gridSizeSaver, id - gridSizeSaver];
     centralPixels.forEach(function (item) {
-        console.log(item);
         let neighbour = document.getElementById(item);
         if (neighbour != null) {
             neighbour.style.backgroundColor = filler;
