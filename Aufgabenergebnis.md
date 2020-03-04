@@ -8,7 +8,7 @@ Folgende Technolgien / Frameworks setze ich in meinem Projekt ein:
 - HTML 5
 
 
-Ich habe mich für JS und HTML entschieden weil ich mit im Frontend mit diesen beiden Technologien am vertrautesten bin. 
+Ich habe mich für JS und HTML entschieden weil ich im Frontend mit den beiden Technologien vertrauter bin als mit Java, womit ich im Backend vertraut bin.
 Ich habe mich für jQuery entschieden, weil es für die vollständige Bootstrap Funktionen eh notwendig ist und es die Seitennavigation in JS erleichtert.
 
 ## Eingesetzte 3rd Party Libraries
