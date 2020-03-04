@@ -19,7 +19,7 @@ Name | Begründung
 --- | ---
 [Bootstrap](https://getbootstrap.com/) | Einfaches RWD Framework zur Gestaltung des Frontends + Vertrautheit
 [FontAwesome 4.7](https://fontawesome.com/v4.7.0/)	| Simples Library fur Symbole. Wäre auch in der aktuellen Version 5 möglich gewesen aber 4.7 war ausreichend und bereits lokal auf meinem PC
-[HTML2Canvas] (https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js)	| Um die Pixelgrid-Tabelle in ein Canvas zu transformieren.
+[HTML2Canvas](https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js)	| Um die Pixelgrid-Tabelle in ein Canvas zu transformieren.
 
 
 ## Installation / Ausführen des Projektes
