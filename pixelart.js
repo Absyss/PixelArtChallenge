@@ -63,25 +63,18 @@ function buildGrid(gridSize) {
     }
 }
 
-
-function chooseEraseMode() {
-    mode = erase;
-}
-
-function chooseDrawMode() {
-    mode = draw;
-}
-
-function chooseBucketMode() {
-    mode = fill;
-}
-function changeCustomColor() {
-    document.getElementById("customColor").style.backgroundColor=document.getElementById("changeColor").value
-}
-
-function changeDataType() {
-    dataType = $("#selectDataType").val().toString();
-    recompileImageDate()
+//method for site creation. Adds the select color functionality to colors
+function addColorListener() {
+    //iterates all elements of class colorPixel
+    $('.colorPixel').each(function (i, obj) {
+        obj.addEventListener('click', function changeSelectedColor() {
+            color = this.style.backgroundColor;
+            $('.colorPixel').each(function (i, obj) {
+                obj.style.borderColor = 'black';
+            });
+            this.style.borderColor = 'white';
+        })
+    })
 }
 
 //finds neighbours through sibling elements and id for vertical nav.
@@ -103,24 +96,33 @@ function fillNeighbourPixels(id, filler) {
             }
         }
     });
+}
 
+//Drawing Mode selection
+function chooseEraseMode() {
+    mode = erase;
+}
 
+function chooseDrawMode() {
+    mode = draw;
+}
+
+function chooseBucketMode() {
+    mode = fill;
+}
+
+//Custom Color Change
+function changeCustomColor() {
+    document.getElementById("customColor").style.backgroundColor = document.getElementById("changeColor").value
+}
+
+//DataType Change for Download Modal
+function changeDataType() {
+    dataType = $("#selectDataType").val().toString();
+    recompileImageDate()
 }
 
 
-//method for site creation. Adds the select color functionality to colors
-function addColorListener() {
-    //iterates all elements of class colorPixel
-    $('.colorPixel').each(function (i, obj) {
-        obj.addEventListener('click', function changeSelectedColor() {
-            color = this.style.backgroundColor;
-            $('.colorPixel').each(function (i, obj) {
-                obj.style.borderColor = 'black';
-            });
-            this.style.borderColor = 'white';
-        })
-    })
-}
 
 //function that adds the conversion from the grid table to a picture
 //currently gif is accepted mime type but most browsers seem to not support it
