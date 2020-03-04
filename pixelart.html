@@ -62,7 +62,7 @@
                             <div class="col">
                             <div class="colorPixel" id="customColor" style="background-color: blue"></div>
                             </div>
-                            <div class="col justify-content-center">
+                            <div class="col justify-content-center" data-toggle="tooltip" title="change the custom color">
                                 <label for="changeColor"><em class="fa fa-tint fa-2x"></em> </label>
                                 <input type="color" style="display: none" id="changeColor" onchange="changeCustomColor()"/>
                             </div>
@@ -74,13 +74,13 @@
                 <span class="d-flex justify-content-center">Drawing Tools</span>
                 <p/>
                 <div class="btn-group d-flex justify-content-between">
-                    <button onclick="chooseEraseMode()" id="erase" class="btn btn-default dashboard-shortcut">
+                    <button onclick="chooseEraseMode()" id="erase" class="btn btn-default dashboard-shortcut" data-toggle="tooltip" title="remove the color of a pixel">
                         <span class="fa fa-eraser fa-2x"></span>
                     </button>
-                    <button onclick="chooseDrawMode()" id="draw" class="btn btn-default dashboard-shortcut">
+                    <button onclick="chooseDrawMode()" id="draw" class="btn btn-default dashboard-shortcut" data-toggle="tooltip" title="color one pixel in the selected color">
                         <em class="fa fa-pencil fa-2x"></em>
                     </button>
-                    <button onclick="chooseBucketMode()" id="bucket" class="btn btn-default dashboard-shortcut">
+                    <button onclick="chooseBucketMode()" id="bucket" class="btn btn-default dashboard-shortcut" data-toggle="tooltip" title="color all neighbours of a pixel in its color">
                         <em class="fa fa-paint-brush fa-2x"></em>
                     </button>
                 </div>
